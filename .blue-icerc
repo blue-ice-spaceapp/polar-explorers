@@ -1,0 +1,10 @@
+---
+defaults:
+    browser:
+        google_auth:
+            params:
+                client_id: 357758383510-bk4eimbjos72djmne1jmphvkl1907uj5.apps.googleusercontent.com
+                hosted_domain: etventure.com
+staging:
+    browser:
+        testt:test

@@ -1,0 +1,6 @@
+node_modules/
+.next/
+app/build/
+app/.next/
+
+.DS_Store

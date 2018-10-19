@@ -1,0 +1,14 @@
+# ignore packages/caches
+app/lib/app_config.js
+node_modules/
+PSD/
+hot/
+dist/
+build/
+release/
+temp/
+tmp/
+.next/
+lib/app_config.js
+.vagrant
+**/__generated__/*
