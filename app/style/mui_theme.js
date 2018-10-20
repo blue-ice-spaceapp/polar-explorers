@@ -11,8 +11,17 @@ const theme = {
         // Use the system font over Roboto.
         fontFamily: 'Roboto, sans-serif',
         fontSize: '14px',
+        body: {
+            fontSize: '22px',
+        },
         caption: {
-            color: '#455A64',
+            color: '#000',
+        },
+        mainTitle: {
+            fontFamily: 'Fascinate Inline, sans-serif',
+        },
+        Headline: {
+            fontFamily: 'Fascinate Inline, sans-serif',
         },
     },
     palette: {
@@ -20,16 +29,16 @@ const theme = {
             default: '#fafafa',
         },
         primary: {
-            light: '#7986cb',
-            main: '#3f51b5',
-            dark: '#303f9f',
-            contrastText: '#fff',
+            light: '#b6ffff',
+            main: '#81d4fa',
+            dark: '#4ba3c7',
+            contrastText: '#000',
         },
         secondary: {
-            light: '#ff4081',
-            main: '#f50057',
-            dark: '#c51162',
-            contrastText: '#ffffff',
+            light: '#e5ffff',
+            main: '#b2ebf2',
+            dark: '#81b9bf',
+            contrastText: '#000',
         },
     },
 }

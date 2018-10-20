@@ -21,8 +21,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/core": "^1.0.0",
-    "@material-ui/icons": "^1.0.0",
+    "@material-ui/core": "3.2.2",
+    "@material-ui/icons": "3.2.2",
     "apollo-client-preset": "^1.0.8",
     "apollo-link-context": "^1.0.8",
     "apprc": "2.0.3",
