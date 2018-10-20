@@ -18,10 +18,10 @@ const theme = {
             color: '#000',
         },
         mainTitle: {
-            fontFamily: 'Fascinate Inline, sans-serif',
+            fontFamily: 'Paytone One, sans-serif',
         },
         Headline: {
-            fontFamily: 'Fascinate Inline, sans-serif',
+            fontFamily: 'Paytone One, sans-serif',
         },
     },
     palette: {
@@ -37,7 +37,7 @@ const theme = {
         secondary: {
             light: '#e5ffff',
             main: '#b2ebf2',
-            dark: '#81b9bf',
+            dark: '#031c42',
             contrastText: '#000',
         },
     },

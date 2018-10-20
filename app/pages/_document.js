@@ -57,7 +57,7 @@ export default class MyDocument extends Document {
                       rel='stylesheet'
                       href='https://fonts.googleapis.com/css?family=Roboto:300,400,700'
                   />
-                  <link href='https://fonts.googleapis.com/css?family=Fascinate+Inline' rel='stylesheet'></link>
+                  <link href='https://fonts.googleapis.com/css?family=Paytone+One' rel='stylesheet' />
                   {/* PWA primary color */}
                   <meta name='theme-color' content={ muiPageContext.theme.palette.primary.main } />
 

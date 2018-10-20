@@ -11,7 +11,7 @@ import { signOutWithGoogle } from '../lib/GoogleAuthRedux'
 import Challange from '../components/atoms/Challange'
 import Map from '../components/atoms/Map'
 import { breakpoint, themeColor, gutter } from '../style/helpers'
-
+import Footer from '../components/atoms/Footer'
 import DotSpinner from '../components/atoms/DotSpinner'
 import RequireAuth from '../components/organisms/RequireAuth'
 import App from '../components/App'
@@ -29,18 +29,36 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import ExitIcon from '@material-ui/icons/ExitToApp'
+import IconButton from '@material-ui/core/IconButton'
+import { Typography } from '@material-ui/core'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
 // STYLED COMPONENTS
 // sample using themecolor and breakpoint style utility
-const MainTitle = styled.div` 
-    color: ${ themeColor('primary.contrastText') };
-    flex-grow: 1;
-    font-family: Fascinate Inline, sans-serif;
-    font-size: 24px;
-    color: #1668ad;
-    margin-left: 17px;
-    @media ${ breakpoint('sm') } {
-        font-size: 43px;   
+const MainTitle = styled(Toolbar)` 
+    &>img{
+        margin-bottom: -24px;
     }
+    & > div{
+        color: ${ themeColor('primary.contrastText') };
+        flex-grow: 1;
+        font-family: Paytone One, sans-serif;
+        font-size: 24px;
+        max-width: 100px;
+        line-height:20px;
+        color: #031c42;
+
+        margin-left: 17px;
+        @media ${ breakpoint('sm') } {
+            font-size: 43px;   
+            max-width: 300px;
+            line-height:32px;
+        }
+    }
+    ${ gutter('margin-bottom', 1) };
 `
 
 
@@ -64,18 +82,15 @@ const TabLabel = styled.span`
     font-size: 20px;
 `
 
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import ExitIcon from '@material-ui/icons/ExitToApp'
-import IconButton from '@material-ui/core/IconButton'
-import { Typography } from '@material-ui/core'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
 
 import PrintCard from '../components/atoms/PrintCard'
 const MainAppBar = styled(AppBar)`
     padding-top: 24px;
+    background-color: white !important;
     font-weight: 700;
+`
+const NavBar = styled(Toolbar)`
+    background-color: ${ themeColor('primary') };
 `
 // <div>Icons made by <a href="https://www.flaticon.com/authors/mavadee" title="mavadee">mavadee</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 // Main index page component
@@ -102,11 +117,11 @@ class Index extends React.Component {
             <App>
                 {/* <RequireAuth> */} {/* forces user login, check the source */}
                 <MainAppBar position='static'>
-                    <Toolbar>
-                        <img width='50px' src='/static/arctic.svg' />
-                        <MainTitle>Polar explorers</MainTitle>
-                    </Toolbar>
-                    <Toolbar>
+                    <MainTitle>
+                        <img width='100px' src='/static/logo1.svg' />
+                        <div>Polar explorers</div>
+                    </MainTitle>
+                    <NavBar>
 
                         <Tabs value={ value } onChange={ this.handleChange }>
                             <Tab label={ <TabLabel>Make</TabLabel> } />
@@ -114,7 +129,7 @@ class Index extends React.Component {
                             <Tab label={ <TabLabel>Play</TabLabel> } />
                         </Tabs>
 
-                    </Toolbar>
+                    </NavBar>
                 </MainAppBar>
                 <Content>
                     <Choose>
@@ -129,6 +144,7 @@ class Index extends React.Component {
 
                                 <PrintCard type='equipment cards' />
                                 <PrintCard type='challange cards' />
+                                <PrintCard type='lotery tokens' />
                             </Grid>
                             <Title1>Cut</Title1>
                             <ul>
@@ -136,6 +152,8 @@ class Index extends React.Component {
                                 <li>4 character tokens</li>
                                 <li>30 challange cards</li>
                                 <li>12 challange cards</li>
+                                <li>12 lotery tokens</li>
+
                             </ul>
 
                             <Title1>Additinal things</Title1>
@@ -159,8 +177,10 @@ class Index extends React.Component {
                         </Otherwise>
                     </Choose>
 
-                    <div>Icons made by <a href='https://www.flaticon.com/authors/smashicons' title='Smashicons'>Smashicons</a>, <a href='https://www.flaticon.com/authors/pixel-buddha' title='Pixel Buddha'>Pixel Buddha</a> and  <a href='http://www.freepik.com/' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/' title='Flaticon'>www.flaticon.com</a> is licensed by <a href='http://creativecommons.org/licenses/by/3.0/' title='Creative Commons BY 3.0' target='_blank'>CC 3.0 BY</a></div>
                 </Content>
+                <Footer>
+                    <div>Icons made by <a href='https://www.flaticon.com/authors/smashicons' title='Smashicons'>Smashicons</a>, <a href='https://www.flaticon.com/authors/pixel-buddha' title='Pixel Buddha'>Pixel Buddha</a> and  <a href='http://www.freepik.com/' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/' title='Flaticon'>www.flaticon.com</a> is licensed by <a href='http://creativecommons.org/licenses/by/3.0/' title='Creative Commons BY 3.0' target='_blank'>CC 3.0 BY</a>, everything else by Team Ice</div>
+                </Footer>
                 {/* </RequireAuth> */}
             </App>
         )
