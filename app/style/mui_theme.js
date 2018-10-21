@@ -15,7 +15,7 @@ const theme = {
             fontSize: '22px',
         },
         caption: {
-            color: '#000',
+            color: '#031c42',
         },
         mainTitle: {
             fontFamily: 'Paytone One, sans-serif',
@@ -32,13 +32,13 @@ const theme = {
             light: '#b6ffff',
             main: '#81d4fa',
             dark: '#4ba3c7',
-            contrastText: '#000',
+            contrastText: '#031c42',
         },
         secondary: {
             light: '#e5ffff',
             main: '#b2ebf2',
             dark: '#031c42',
-            contrastText: '#000',
+            contrastText: '#031c42',
         },
     },
 }

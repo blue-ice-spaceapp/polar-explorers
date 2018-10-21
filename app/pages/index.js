@@ -1,44 +1,37 @@
-import gql from 'graphql-tag'
-import { Query } from 'react-apollo'
-import { Fragment } from 'react'
+
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import game from '../game'
+
+import { breakpoint, themeColor, gutter } from '../style/helpers'
+
 import applyWrappers from '../lib/applyWrappers'
 import withRedux from '../lib/withRedux'
 import withMUI from '../lib/withMUI'
 import { signOutWithGoogle } from '../lib/GoogleAuthRedux'
 import Challange from '../components/atoms/Challange'
 import Map from '../components/atoms/Map'
-import { breakpoint, themeColor, gutter } from '../style/helpers'
+
+import Router from 'next/router'
 import Footer from '../components/atoms/Footer'
+import Make from '../components/pages/Make'
+import Learn from '../components/pages/Learn'
 import DotSpinner from '../components/atoms/DotSpinner'
 import RequireAuth from '../components/organisms/RequireAuth'
 import App from '../components/App'
-// MUI Stuff
-// https://material-ui.com/demos/
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemAvatar from '@material-ui/core/ListItemAvatar'
-import ListItemText from '@material-ui/core/ListItemText'
-import Avatar from '@material-ui/core/Avatar'
-import FolderIcon from '@material-ui/icons/Folder'
-import Button from '@material-ui/core/Button'
-import Title1 from '../components/atoms/Title1'
+
 import React from 'react'
-import PropTypes from 'prop-types'
+
 import { withStyles } from '@material-ui/core/styles'
-import Grid from '@material-ui/core/Grid'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import ExitIcon from '@material-ui/icons/ExitToApp'
-import IconButton from '@material-ui/core/IconButton'
-import { Typography } from '@material-ui/core'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
+
+import game from '../game'
 // STYLED COMPONENTS
 // sample using themecolor and breakpoint style utility
 const MainTitle = styled(Toolbar)` 
+    ${ ({ clickable }) => clickable ? 'cursor: pointer;' : '' }
     &>img{
         margin-bottom: -24px;
     }
@@ -83,7 +76,6 @@ const TabLabel = styled.span`
 `
 
 
-import PrintCard from '../components/atoms/PrintCard'
 const MainAppBar = styled(AppBar)`
     padding-top: 24px;
     background-color: white !important;
@@ -96,34 +88,60 @@ const NavBar = styled(Toolbar)`
 // Main index page component
 
 const FrontPageDiv = styled.div`
-    background-image:url('/static/Antarticaaaaa.svg');
-    margin: -40px;
+    background-image:url('/static/mapBG2.png');
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
     background-size:cover;
     background-position: center;
-    height: calc(100vh - 128px);
+    height: calc(100vh - 320px);
+    vertical-align: center;
+    &>a{
+        display:flex;
+        opacity:1;
+        vertical-align: center;
+        font-family: Paytone One, sans-serif;
+        font-size:60px;
+        color: #031c42;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.2s ease-out;
+        &:hover {
+            text-decoration: underline;
+            transform: scale(1.3) translate(-1%,-1%);
+        }
+    }
 `
 class Index extends React.Component {
     state = {
         value: -1,
     };
+    static getIntialProps ({ req, query, params }) {
+
+    }
     handleChange = (event, value) => {
         this.setState({ value })
+        Router.push('/?page=' + value)
     };
 
     render () {
         let { value } = this.state
+        const { url: { query: { page } } } = this.props
+        const parsedPage = parseInt(page, 10)
+
         value = 0
         return (
             <App>
                 {/* <RequireAuth> */} {/* forces user login, check the source */}
                 <MainAppBar position='static'>
-                    <MainTitle>
+                    <MainTitle clickable={ parsedPage !== null } onClick={ () => Router.push('/') }>
                         <img width='100px' src='/static/logo1.svg' />
                         <div>Polar explorers</div>
                     </MainTitle>
                     <NavBar>
 
-                        <Tabs value={ value } onChange={ this.handleChange }>
+                        <Tabs value={ parsedPage } onChange={ this.handleChange }>
                             <Tab label={ <TabLabel>Make</TabLabel> } />
                             <Tab label={ <TabLabel>Learn</TabLabel> } />
                             <Tab label={ <TabLabel>Play</TabLabel> } />
@@ -131,53 +149,28 @@ class Index extends React.Component {
 
                     </NavBar>
                 </MainAppBar>
-                <Content>
-                    <Choose>
-                        <When condition={ value === 0 }>
-                            <Title1>Print</Title1>
-                            <Grid container justify='center' spacing={ 32 }>
-                                <PrintCard type='map' />
 
-                                <PrintCard type='character cards' optional />
-
-                                <PrintCard type='character tokens' />
-
-                                <PrintCard type='equipment cards' />
-                                <PrintCard type='challange cards' />
-                                <PrintCard type='lotery tokens' />
-                            </Grid>
-                            <Title1>Cut</Title1>
-                            <ul>
-                                <li>4 character cards</li>
-                                <li>4 character tokens</li>
-                                <li>30 challange cards</li>
-                                <li>12 challange cards</li>
-                                <li>12 lotery tokens</li>
-
-                            </ul>
-
-                            <Title1>Additinal things</Title1>
-                            <ul>
-                                <li>2 dice</li>
-                                <li>30 markers/stones for completed questes</li>
-                                <li>30 markers/stones for melted ice fragmetns</li>
-                            </ul>
-                        </When>
-                        <When condition={ value === 1 }>
-                        Tab2
-                        </When>
-                        <When condition={ value === 2 }>
+                <Choose>
+                    <When condition={ parsedPage === 0 }>
+                        <Content>
+                            <Make />
+                        </Content>
+                    </When>
+                    <When condition={ parsedPage === 1 }>
+                        <Content>
+                            <Learn />
+                        </Content>
+                    </When>
+                    <When condition={ parsedPage === 2 }>
                         Tab3
-                        </When>
-                        <Otherwise>
-                            <FrontPageDiv>
-                                <Map />
-                                <Challange />
-                            </FrontPageDiv>
-                        </Otherwise>
-                    </Choose>
+                    </When>
+                    <Otherwise>
+                        <FrontPageDiv>
+                            <a href={ '/?page=0' }>Begin</a>
+                        </FrontPageDiv>
+                    </Otherwise>
+                </Choose>
 
-                </Content>
                 <Footer>
                     <div>Icons made by <a href='https://www.flaticon.com/authors/smashicons' title='Smashicons'>Smashicons</a>, <a href='https://www.flaticon.com/authors/pixel-buddha' title='Pixel Buddha'>Pixel Buddha</a> and  <a href='http://www.freepik.com/' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/' title='Flaticon'>www.flaticon.com</a> is licensed by <a href='http://creativecommons.org/licenses/by/3.0/' title='Creative Commons BY 3.0' target='_blank'>CC 3.0 BY</a>, everything else by Team Ice</div>
                 </Footer>

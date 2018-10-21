@@ -5,7 +5,7 @@ import CardContent from '@material-ui/core/CardContent'
 import _CardMedia from '@material-ui/core/CardMedia'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardActionArea from '@material-ui/core/CardActionArea'
-import Router from 'next/router'
+
 import Typography from '@material-ui/core/Typography'
 import styled from 'styled-components'
 import { typography, themeColor, capitalize } from '../../style/helpers'
