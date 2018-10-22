@@ -43,7 +43,7 @@ export default class MyDocument extends Document {
           <html>
               <Head>
                   <ConfigScript env_config={ this.props.env_config } />
-                  <title>My page</title>
+                  <title>Polar Explorers</title>
                   <meta charSet='utf-8' />
                   <meta
                       name='viewport'
@@ -52,6 +52,14 @@ export default class MyDocument extends Document {
                 'minimum-scale=1, width=device-width, height=device-height'
                       }
                   />
+                  <script async src='https://www.googletagmanager.com/gtag/js?id=UA-77664268-2'></script>
+                  <script dangerouslySetInnerHTML={{ __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){window.dataLayer.push(arguments)}
+                    gtag('js', new Date());
+                    gtag('config', 'UA-77664268-2',  { 'anonymize_ip': true, 'storage': 'none' });` }}
+                  />
+
 
                   <link
                       rel='stylesheet'

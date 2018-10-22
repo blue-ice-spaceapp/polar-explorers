@@ -14,7 +14,7 @@ import Map from '../components/atoms/Map'
 import Router from 'next/router'
 import Footer from '../components/atoms/Footer'
 import Make from '../components/pages/Make'
-import Learn from '../components/pages/Learn'
+import Instructions from '../components/pages/Instructions'
 import DotSpinner from '../components/atoms/DotSpinner'
 import RequireAuth from '../components/organisms/RequireAuth'
 import App from '../components/App'
@@ -105,10 +105,10 @@ const FrontPageDiv = styled.div`
         font-size:60px;
         color: #031c42;
         cursor: pointer;
-        text-decoration: none;
+        
         transition: all 0.2s ease-out;
         &:hover {
-            text-decoration: underline;
+            
             transform: scale(1.3) translate(-1%,-1%);
         }
     }
@@ -143,8 +143,7 @@ class Index extends React.Component {
 
                         <Tabs value={ parsedPage } onChange={ this.handleChange }>
                             <Tab label={ <TabLabel>Make</TabLabel> } />
-                            <Tab label={ <TabLabel>Learn</TabLabel> } />
-                            <Tab label={ <TabLabel>Play</TabLabel> } />
+                            <Tab label={ <TabLabel>Playing Instruction</TabLabel> } />
                         </Tabs>
 
                     </NavBar>
@@ -158,7 +157,7 @@ class Index extends React.Component {
                     </When>
                     <When condition={ parsedPage === 1 }>
                         <Content>
-                            <Learn />
+                            <Instructions />
                         </Content>
                     </When>
                     <When condition={ parsedPage === 2 }>

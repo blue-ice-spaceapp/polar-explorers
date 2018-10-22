@@ -8,20 +8,27 @@ import CardActionArea from '@material-ui/core/CardActionArea'
 
 import Typography from '@material-ui/core/Typography'
 import styled from 'styled-components'
-import { typography, themeColor, capitalize } from '../../style/helpers'
+import { typography, themeColor, capitalize, breakpoint } from '../../style/helpers'
 const Card = styled(_Card)`
 `
 
 const CardMedia = styled(_CardMedia)`
     height: 150px;
+    
+    
 `
-
+/* @media ${ breakpoint('md') } {
+        height: 20vw !important;
+    } */
 const Grid = styled(_Grid)`
     max-width: 300px !important;
+   
 `
-
+/* @media ${ breakpoint('md') } {
+        max-width: 600px !important;
+    } */
 const PrintCard = ({ type }) => (
-    <Grid item md={ 4 } sm={ 6 } xs={ 12 }>
+    <Grid item lg={ 4 } md={ 4 } sm={ 6 } xs={ 12 }>
         <Card >
             <CardActionArea onClick={ () => setTimeout(window.open(`/static/gameAssets/${ type }Print.pdf`, '_new'), 100) }>
                 <CardHeader title={

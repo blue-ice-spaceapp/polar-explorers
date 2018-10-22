@@ -10,12 +10,10 @@ const Make = () => (
         <Grid container justify='center' spacing={ 32 }>
             <PrintCard type='map' />
 
-            <PrintCard type='character cards' optional />
-
             <PrintCard type='character tokens' />
 
-            <PrintCard type='equipment cards' />
-            <PrintCard type='challange cards' />
+            <PrintCard type='equipment tokens' />
+            <PrintCard type='challenge cards' />
             <PrintCard type='lotery tokens' />
         </Grid>
         <Title1>Cut</Title1>
@@ -28,7 +26,7 @@ const Make = () => (
 
         </ul>
 
-        <Title1>Additinal things</Title1>
+        <Title1>Additional things</Title1>
         <ul>
             <li>2 dice</li>
             <li>30 markers/stones for completed questes</li>

@@ -19,18 +19,22 @@ const Grid = styled(_Grid)`
     max-width: 300px !important;
 `
 
-const PrintCard = ({ type }) => (
+const PrintCard = ({ picture, title, onClick, label }) => (
     <Grid item md={ 4 } sm={ 6 } xs={ 12 }>
         <Card >
-            <CardActionArea onClick={ () => setTimeout(window.open(`/static/gameAssets/${ type }Print.pdf`, '_new'), 100) }>
+            <CardActionArea onClick={ () => setTimeout(onClick(), 100) }>
                 <CardMedia
-                    image={ `/static/gameAssets/${ type }.png` }
-                    title={ capitalize(type) }
+                    image={ picture }
+                    title={ capitalize(title) }
                 />
                 <CardContent>
                     <Typography gutterBottom variant='h2' component='h2'>
-                        {capitalize(type)}
+                        {capitalize(title)}
                     </Typography>
+                    <If condition={ label }>
+                        <Typography gutterBottom variant='h4' component='h4'>
+                        </Typography>
+                    </If>
 
                 </CardContent>
             </CardActionArea>
