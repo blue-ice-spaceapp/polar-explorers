@@ -52,13 +52,6 @@ export default class MyDocument extends Document {
                 'minimum-scale=1, width=device-width, height=device-height'
                       }
                   />
-                  <script async src='https://www.googletagmanager.com/gtag/js?id=UA-77664268-2'></script>
-                  <script dangerouslySetInnerHTML={{ __html: `
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){window.dataLayer.push(arguments)}
-                    gtag('js', new Date());
-                    gtag('config', 'UA-77664268-2',  { 'anonymize_ip': true, 'storage': 'none' });` }}
-                  />
 
 
                   <link
@@ -79,3 +72,12 @@ export default class MyDocument extends Document {
       )
   }
 }
+// GA for later, not safe right now: lack of opt-in
+/* <script async src='https://www.googletagmanager.com/gtag/js?id=UA-77664268-2'></script>
+                  <script dangerouslySetInnerHTML={{ __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){window.dataLayer.push(arguments)}
+                    gtag('js', new Date());
+                    gtag('config', 'UA-77664268-2',  { 'anonymize_ip': true, 'storage': 'none' });` }}
+                  />
+*/
