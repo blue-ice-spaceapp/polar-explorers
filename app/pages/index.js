@@ -55,9 +55,57 @@ const MainTitle = styled(Toolbar)`
 `
 
 
+const MidAlign = styled.div`
+max-width: 800px;
+width: 100%;
+margin: auto;
+`
 // sample using gutter utility
+/* &::before {
+        content: ' ';
+        background: inherit;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        filter:blur(5px);
+    } */
 const Content = styled.div`
-${ gutter('padding', 3) };
+    background-color: rgba(255,255,255,0.9);
+
+    
+    ${ gutter('padding', 3) };
+    font-size: 20px;
+
+ul {
+  list-style: none;
+  li{
+      margin: 3px 0;
+  }
+  li>ul{
+    font-size:17px;
+    li::before{
+        content: "❅";
+        font-size: 0.9em;
+        width: 1.2em; /* Also needed for space (tweak if needed) */
+        margin-left: -1.2em; /* Also needed for space (tweak if needed) */ 
+    }
+  }
+  li::before {
+    content: "❄"; 
+    color: ${ themeColor('primary.dark') };
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */ 
+    font-size: 1.1em;
+    width: 1.3em; /* Also needed for space (tweak if needed) */
+    margin-left: -1.3em; /* Also needed for space (tweak if needed) */
+   
+    }
+}
+
+
+
 `
 
 
@@ -79,23 +127,30 @@ const TabLabel = styled.span`
 const MainAppBar = styled(AppBar)`
     padding-top: 24px;
     background-color: white !important;
+
     font-weight: 700;
+    position: relative !important;
+    z-index:999;
 `
 const NavBar = styled(Toolbar)`
     background-color: ${ themeColor('primary') };
 `
 // <div>Icons made by <a href="https://www.flaticon.com/authors/mavadee" title="mavadee">mavadee</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 // Main index page component
-
+const Background = styled.div`
+ background-image:url('/static/mapBG2.png');
+ background-size:cover;
+background-position: center;
+ `
 const FrontPageDiv = styled.div`
-    background-image:url('/static/mapBG2.png');
+    
     display: flex;
     
     align-items: center;
     justify-content: center;
     background-size:cover;
     background-position: center;
-    height: calc(100vh - 320px);
+    height: calc(100vh - 220.2px);
     vertical-align: center;
     &>a{
         display:flex;
@@ -114,12 +169,13 @@ const FrontPageDiv = styled.div`
     }
 `
 class Index extends React.Component {
-    state = {
-        value: -1,
-    };
+
     static getIntialProps ({ req, query, params }) {
 
     }
+    state = {
+        value: -1,
+    };
     handleChange = (event, value) => {
         this.setState({ value })
         Router.push('/?page=' + value)
@@ -135,41 +191,46 @@ class Index extends React.Component {
             <App>
                 {/* <RequireAuth> */} {/* forces user login, check the source */}
                 <MainAppBar position='static'>
-                    <MainTitle clickable={ parsedPage !== null } onClick={ () => Router.push('/') }>
-                        <img width='100px' src='/static/logo1.svg' />
-                        <div>Polar explorers</div>
-                    </MainTitle>
+                    <MidAlign>
+                        <MainTitle clickable={ parsedPage !== null } onClick={ () => Router.push('/') }>
+                            <img width='100px' src='/static/logo1.svg' />
+                            <div>Polar explorers</div>
+                        </MainTitle>
+                    </MidAlign>
                     <NavBar>
-
-                        <Tabs value={ parsedPage } onChange={ this.handleChange }>
-                            <Tab label={ <TabLabel>Make</TabLabel> } />
-                            <Tab label={ <TabLabel>Playing Instruction</TabLabel> } />
-                        </Tabs>
-
+                        <MidAlign>
+                            <Tabs value={ parsedPage } onChange={ this.handleChange }>
+                                <Tab label={ <TabLabel>Make</TabLabel> } />
+                                <Tab label={ <TabLabel>Playing Instruction</TabLabel> } />
+                            </Tabs>
+                        </MidAlign>
                     </NavBar>
                 </MainAppBar>
+                <Background>
+                    <MidAlign>
+                        <Choose>
 
-                <Choose>
-                    <When condition={ parsedPage === 0 }>
-                        <Content>
-                            <Make />
-                        </Content>
-                    </When>
-                    <When condition={ parsedPage === 1 }>
-                        <Content>
-                            <Instructions />
-                        </Content>
-                    </When>
-                    <When condition={ parsedPage === 2 }>
+                            <When condition={ parsedPage === 0 }>
+                                <Content>
+                                    <Make />
+                                </Content>
+                            </When>
+                            <When condition={ parsedPage === 1 }>
+                                <Content>
+                                    <Instructions />
+                                </Content>
+                            </When>
+                            <When condition={ parsedPage === 2 }>
                         Tab3
-                    </When>
-                    <Otherwise>
-                        <FrontPageDiv>
-                            <a href={ '/?page=0' }>Begin</a>
-                        </FrontPageDiv>
-                    </Otherwise>
-                </Choose>
-
+                            </When>
+                            <Otherwise>
+                                <FrontPageDiv>
+                                    <a href={ '/?page=0' }>Begin</a>
+                                </FrontPageDiv>
+                            </Otherwise>
+                        </Choose>
+                    </MidAlign>
+                </Background>
                 {/* </RequireAuth> */}
             </App>
         )

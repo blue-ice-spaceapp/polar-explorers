@@ -14,7 +14,9 @@ const Card = styled(_Card)`
 
 const CardMedia = styled(_CardMedia)`
     height: 150px;
-    
+    margin-bottom: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
     
 `
 /* @media ${ breakpoint('md') } {

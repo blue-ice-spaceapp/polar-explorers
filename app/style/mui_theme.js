@@ -10,7 +10,7 @@ const theme = {
     typography: {
         // Use the system font over Roboto.
         fontFamily: 'Roboto, sans-serif',
-        fontSize: '14px',
+        fontSize: '22px',
         body: {
             fontSize: '22px',
         },
@@ -19,6 +19,9 @@ const theme = {
         },
         mainTitle: {
             fontFamily: 'Paytone One, sans-serif',
+        },
+        h2: {
+            fontSize: '22px',
         },
         Headline: {
             fontFamily: 'Paytone One, sans-serif',
