@@ -2,7 +2,7 @@ const express = require('express')
 const next = require('next')
 const path = require('path')
 const port = parseInt(process.env.PORT, 10) || 3010
-const dev = true// process.env.NODE_ENV !== 'production'
+const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev, dir: './app' })
 const handle = app.getRequestHandler()
 const fs = require('fs')
