@@ -10,7 +10,7 @@ import withMUI from '../lib/withMUI'
 import { signOutWithGoogle } from '../lib/GoogleAuthRedux'
 import Challange from '../components/atoms/Challange'
 import Map from '../components/atoms/Map'
-
+import Link from 'next/link'
 import Router from 'next/router'
 import Footer from '../components/atoms/Footer'
 import Make from '../components/pages/Make'
@@ -32,23 +32,30 @@ import game from '../game'
 // sample using themecolor and breakpoint style utility
 const MainTitle = styled(Toolbar)` 
     ${ ({ clickable }) => clickable ? 'cursor: pointer;' : '' }
+
     &>img{
-        margin-bottom: -24px;
+        margin-bottom: -17px;
+        width: 67px;
+        @media ${ breakpoint('sm') } {
+            margin-bottom: -24px;
+            width: 100px;
+        }
     }
     & > div{
         color: ${ themeColor('primary.contrastText') };
         flex-grow: 1;
         font-family: Paytone One, sans-serif;
-        font-size: 24px;
-        max-width: 100px;
+        font-size: 31px; 
+        max-width: 600px;
         line-height:20px;
         color: #031c42;
-
+        line-height: 28px;
         margin-left: 17px;
         @media ${ breakpoint('sm') } {
             font-size: 43px;   
             max-width: 300px;
             line-height:32px;
+            
         }
     }
     ${ gutter('margin-bottom', 1) };
@@ -125,8 +132,11 @@ const TabLabel = styled.span`
 
 
 const MainAppBar = styled(AppBar)`
-    padding-top: 24px;
+    
     background-color: white !important;
+    @media ${ breakpoint('sm') } {
+        padding-top: 24px;    
+    }
 
     font-weight: 700;
     position: relative !important;
@@ -140,6 +150,7 @@ const NavBar = styled(Toolbar)`
 const Background = styled.div`
  background-image:url('/static/mapBG2.png');
  background-size:cover;
+ background-attachment: fixed;
 background-position: center;
  `
 const FrontPageDiv = styled.div`
@@ -150,7 +161,11 @@ const FrontPageDiv = styled.div`
     justify-content: center;
     background-size:cover;
     background-position: center;
-    height: calc(100vh - 220.2px);
+    height: calc(100vh - 134.578px);
+    @media ${ breakpoint('sm') } {
+        height: calc(100vh - 220.2px);
+    }
+
     vertical-align: center;
     &>a{
         display:flex;
@@ -193,7 +208,7 @@ class Index extends React.Component {
                 <MainAppBar position='static'>
                     <MidAlign>
                         <MainTitle clickable={ parsedPage !== null } onClick={ () => Router.push('/') }>
-                            <img width='100px' src='/static/logo1.svg' />
+                            <img src='/static/logo1.svg' />
                             <div>Polar explorers</div>
                         </MainTitle>
                     </MidAlign>
@@ -225,7 +240,9 @@ class Index extends React.Component {
                             </When>
                             <Otherwise>
                                 <FrontPageDiv>
-                                    <a href={ '/?page=0' }>Begin</a>
+                                    <Link href={ '/?page=0' }>
+                                        <a >Begin</a>
+                                    </Link>
                                 </FrontPageDiv>
                             </Otherwise>
                         </Choose>

@@ -3,13 +3,18 @@ import _Grid from '@material-ui/core/Grid'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import _CardMedia from '@material-ui/core/CardMedia'
-import CardHeader from '@material-ui/core/CardHeader'
+import _CardHeader from '@material-ui/core/CardHeader'
 import CardActionArea from '@material-ui/core/CardActionArea'
 
 import Typography from '@material-ui/core/Typography'
 import styled from 'styled-components'
 import { typography, themeColor, capitalize, breakpoint } from '../../style/helpers'
 const Card = styled(_Card)`
+`
+
+const CardHeader = styled(_CardHeader)`
+    padding-left: 15px !important;
+    padding-right: 15px !important;
 `
 
 const CardMedia = styled(_CardMedia)`
@@ -39,7 +44,7 @@ const PrintCard = ({ type }) => (
                     </Typography> }
                 />
                 <CardMedia
-                    image={ `/static/gameAssets/${ type }.png` }
+                    image={ `/static/gameAssets/${ type }.jpg` }
                     title={ capitalize(type) }
                 />
 
