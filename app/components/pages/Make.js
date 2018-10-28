@@ -9,9 +9,7 @@ const Make = () => (
         <Title1>Print</Title1>
         <Grid container justify='center' spacing={ 32 }>
             <PrintCard type='map' />
-
             <PrintCard type='character tokens' />
-
             <PrintCard type='equipment tokens' />
             <PrintCard type='challenge cards' />
             <PrintCard type='lotery tokens' />
@@ -26,11 +24,13 @@ const Make = () => (
 
         </ul>
 
-        <Title1>Additional things</Title1>
+        <Title1>Few additional things</Title1>
         <ul>
-            <li>2 dice</li>
-            <li>30 markers/stones for completed questes</li>
-            <li>30 markers/stones for melted ice fragmetns</li>
+            <li>2 regular 6 sided dice</li>
+            <li>10 markers/stones for completed challanges (idea: colored vase filler beads)</li>
+            <li>42 markers/stones for melted ice fragments</li>
+            <li>Optionally glue the map on a piece of cardboard for better playing experience. Same for character tokens and character cards.</li>
+            <li>Add your own creativity!</li>
         </ul>
     </React.Fragment>
 )
